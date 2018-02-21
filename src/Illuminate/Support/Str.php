@@ -30,6 +30,18 @@ class Str
     protected static $studlyCache = [];
 
     /**
+     * Return the remainder of a string after a given value.
+     *
+     * @param  string  $subject
+     * @param  string  $search
+     * @return string
+     */
+    public static function after($subject, $search)
+    {
+        return $search === '' ? $subject : array_reverse(explode($search, $subject, 2))[0];
+    }
+
+    /**
      * Transliterate a UTF-8 value to ASCII.
      *
      * @param  string  $value
@@ -42,6 +54,18 @@ class Str
         }
 
         return preg_replace('/[^\x20-\x7E]/u', '', $value);
+    }
+
+    /**
+     * Get the portion of a string before a given value.
+     *
+     * @param  string  $subject
+     * @param  string  $search
+     * @return string
+     */
+    public static function before($subject, $search)
+    {
+        return $search === '' ? $subject : explode($search, $subject)[0];
     }
 
     /**
